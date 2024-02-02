@@ -24,7 +24,7 @@ def drop_duplis(df, *args, **kwargs):
     df3 = df[subsu].map(repr)
     if isinstance(df3, pd.DataFrame):
         df["__XXXX___DELETE____0"] = functools.reduce(
-            lambda a, b: operator.add(a, df3[b]), df3.columns
+            lambda a, b: operator.add(a, df3[b]),  df3[df3.columns[1:]], df3[df3.columns[0]]
         ).__array__()
     else:
         df["__XXXX___DELETE____0"] = df3.__array__()
